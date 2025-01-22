@@ -23,29 +23,29 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Firefox(service=service)
 
     # ## HEADLESS MODE ####
-    # options = webdriver.ChromeOptions()
-    # options.add_argument('headless')
-    # service = Service(ChromeDriverManager().install())
-    # context.driver = webdriver.Chrome(
-    #     options=options,
-    #     service=service
-    # )
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    service = Service(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(
+        options=options,
+        service=service
+    )
 
     # BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    bs_user = 'moussadiakite_z6gDPL'
-    bs_key = 'bmkPWda7brHPT3FX4Bzy'
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-
-    options = Options()
-    bstack_options = {
-        "os": "Windows",
-        "osVersion": "11",
-        'browserName': 'edge',
-        'sessionName': scenario_name,
-    }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # bs_user = 'moussadiakite_z6gDPL'
+    # bs_key = 'bmkPWda7brHPT3FX4Bzy'
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
+    #     "os": "Windows",
+    #     "osVersion": "11",
+    #     'browserName': 'edge',
+    #     'sessionName': scenario_name,
+    # }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
 
 
